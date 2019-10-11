@@ -1,21 +1,20 @@
 import React from 'react'
-import Col from 'react-bootstrap/Col'
-import Card from 'react-bootstrap/Card'
+import Media from 'react-bootstrap/Media'
 
 const VideoItem = ({ id, snippet }) => {
 	const thumbnailUrl = snippet.thumbnails.default.url
 	return (
-		<Card>
-			<Col>
-				<Card.Img src={thumbnailUrl}/>
-			</Col>
-			<Col>
-				<Card.Body>
-					<Card.Title>{snippet.title}</Card.Title>
-					<Card.Text>{snippet.channelTitle}</Card.Text>
-				</Card.Body>
-			</Col>
-		</Card>
+		<Media as='li' className='mb-3'>
+			<img
+				className='mr-3'
+				src={thumbnailUrl}
+				alt=''
+			/>
+			<Media.Body>
+				<p><strong>{snippet.title}</strong></p>
+				<p className='text-muted'>{snippet.channelTitle}</p>
+			</Media.Body>
+		</Media>
 	)
 }
 
