@@ -30,7 +30,7 @@ class App extends React.Component {
 				</Row>
 				<Row className='justify-content-center'>
 					<VideoPlayer />
-					<VideoList />
+					<VideoList videos={this.state.searchResults}/>
 				</Row>
 			</Container>
 	  );
