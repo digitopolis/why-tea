@@ -9,13 +9,17 @@ import VideoList from './containers/videoList'
 
 class App extends React.Component {
 
-	handleSubmit = (searchTerm) => {
+	state = {
+		searchResults: [],
+		selectedVideo: null
+	}
+
+	handleSubmit = async (searchTerm) => {
 		const apiKey = process.env.REACT_APP_GOOGLE_API_KEY
-		fetch(`${YOUTUBE}q=${searchTerm}&key=${apiKey}`)
-			.then(res => res.json())
-			.then(data => {
-				console.log(data)
-			})
+		const data = await fetch(`${YOUTUBE}q=${searchTerm}&key=${apiKey}`).then(res => res.json())
+		this.setState({
+			searchResults: data.items
+		})
 	}
 
 	render() {
