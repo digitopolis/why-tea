@@ -6,7 +6,6 @@ import VideoItem from '../components/videoItem'
 const VideoList = ({ videos }) => {
 	return (
 		<Col>
-			<h1>Video List</h1>
 			{videos.map(video => {
 				return (
 					<Row>
