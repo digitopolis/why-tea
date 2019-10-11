@@ -1,8 +1,11 @@
 import React from 'react';
 import './App.css';
 import { YOUTUBE } from './apiEndpoints'
+import Row from 'react-bootstrap/Row'
 import Container from 'react-bootstrap/Container'
 import SearchBar from './components/searchBar'
+import VideoPlayer from './containers/videoPlayer'
+import VideoList from './containers/videoList'
 
 class App extends React.Component {
 
@@ -18,7 +21,13 @@ class App extends React.Component {
 	render() {
 		return (
 	    <Container>
-				<SearchBar handleSubmit={this.handleSubmit}/>
+				<Row className='justify-content-center'>
+					<SearchBar handleSubmit={this.handleSubmit}/>
+				</Row>
+				<Row className='justify-content-center'>
+					<VideoPlayer />
+					<VideoList />
+				</Row>
 			</Container>
 	  );
 	}
