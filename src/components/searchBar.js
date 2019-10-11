@@ -11,13 +11,20 @@ class SearchBar extends React.Component {
 		searchTerm: ''
 	}
 
+	handleChange = (event) => {
+		const searchTerm = event.target.value
+		this.setState({ searchTerm })
+	}
+
 	render() {
 		return (
 			<Row>
 				<Col>
 					<InputGroup>
 						<FormControl
-							placeholder='Search'/>
+							placeholder='Search'
+							value={this.state.searchTerm}
+							onChange={this.handleChange}/>
 						<InputGroup.Append>
 							<Button>Search</Button>
 						</InputGroup.Append>
