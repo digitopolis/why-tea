@@ -19,7 +19,8 @@ class App extends React.Component {
 		const apiKey = process.env.REACT_APP_GOOGLE_API_KEY
 		const data = await fetch(`${YTSEARCH}q=${searchTerm}&key=${apiKey}`).then(res => res.json())
 		this.setState({
-			searchResults: data.items
+			searchResults: data.items,
+			selectedVideo: null
 		})
 	}
 
