@@ -22,6 +22,11 @@ class App extends React.Component {
 		})
 	}
 
+	handleVideoSelect = (videoId) => {
+		const selectedVideo = videoId
+		this.setState({ selectedVideo })
+	}
+
 	render() {
 		return (
 	    <Container>
@@ -30,7 +35,10 @@ class App extends React.Component {
 				</Row>
 				<Row className='justify-content-center'>
 					<VideoContainer />
-					<VideoList videos={this.state.searchResults}/>
+					<VideoList
+						videos={this.state.searchResults}
+						handleVideoSelect={this.handleVideoSelect}
+					/>
 				</Row>
 			</Container>
 	  );
