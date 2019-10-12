@@ -16,16 +16,3 @@ const VideoPlayer = (props) => {
 }
 
 export default VideoPlayer
-
-// <iframe
-// 	title='video frame'
-// 	src={youTubeUrl + props.videoId}
-// 	frameBorder='0'
-// 	style={{
-// 		position: 'absolute',
-// 		top: 0,
-// 		left: 0,
-// 		border: 'none',
-// 		width: '100%',
-// 		height: '100%'
-// 	}}/>
