@@ -4,8 +4,8 @@ import { YOUTUBE } from './apiEndpoints'
 import Row from 'react-bootstrap/Row'
 import Container from 'react-bootstrap/Container'
 import SearchBar from './components/searchBar'
-import VideoPlayer from './containers/videoPlayer'
 import VideoList from './containers/videoList'
+import VideoContainer from './containers/videoContainer'
 
 class App extends React.Component {
 
@@ -29,7 +29,7 @@ class App extends React.Component {
 					<SearchBar handleSubmit={this.handleSubmit}/>
 				</Row>
 				<Row className='justify-content-center'>
-					<VideoPlayer />
+					<VideoContainer />
 					<VideoList videos={this.state.searchResults}/>
 				</Row>
 			</Container>
