@@ -4,7 +4,7 @@ import VideoItem from '../components/videoItem'
 
 const VideoList = ({ videos, handleVideoSelect }) => {
 	return (
-		<Col>
+		<Col >
 			<ul className='list-unstyled'>
 				{videos.map(video => {
 					return 	<VideoItem {...video}

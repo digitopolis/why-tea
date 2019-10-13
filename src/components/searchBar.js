@@ -1,5 +1,4 @@
 import React from 'react'
-import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import InputGroup from 'react-bootstrap/InputGroup'
 import Form from 'react-bootstrap/Form'
@@ -24,21 +23,19 @@ class SearchBar extends React.Component {
 
 	render() {
 		return (
-			<Row>
-				<Col>
-					<Form onSubmit={this.handleSubmit}>
-						<InputGroup>
-							<FormControl
-								placeholder='Search'
-								value={this.state.searchTerm}
-								onChange={this.handleChange}/>
-							<InputGroup.Append>
-								<Button variant='secondary' type='submit'>Search</Button>
-							</InputGroup.Append>
-						</InputGroup>
-					</Form>
-				</Col>
-			</Row>
+			<Col md={{ span: 7 }} className='py-1'>
+				<Form onSubmit={this.handleSubmit}>
+					<InputGroup>
+						<FormControl
+							placeholder='Search'
+							value={this.state.searchTerm}
+							onChange={this.handleChange}/>
+						<InputGroup.Append>
+							<Button variant='secondary' type='submit'>Search</Button>
+						</InputGroup.Append>
+					</InputGroup>
+				</Form>
+			</Col>
 		)
 	}
 }
