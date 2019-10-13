@@ -4,7 +4,7 @@ import VideoItem from '../components/videoItem'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Button from 'react-bootstrap/Button'
 
-const VideoList = ({ videos, handleVideoSelect, pageTokens }) => {
+const VideoList = ({ videos, pageTokens, handleVideoSelect, handlePageChange }) => {
 	return (
 		<Col >
 			<ul className='list-unstyled'>
@@ -16,8 +16,12 @@ const VideoList = ({ videos, handleVideoSelect, pageTokens }) => {
 				})}
 			</ul>
 			<ButtonGroup aria-label='search page navigation'>
-				{ pageTokens && pageTokens.prev ? <Button variant='outline-secondary'>Prev</Button> : null }
-				{ pageTokens ? <Button variant='outline-secondary'>Next</Button> : null }
+				{ pageTokens && pageTokens.prev
+					? <Button onClick={ () => handlePageChange(pageTokens.prev) } variant='outline-secondary'>Prev</Button>
+					: null }
+				{ pageTokens && pageTokens.next
+					? <Button onClick={ () => handlePageChange(pageTokens.next) } variant='outline-secondary'>Next</Button>
+					: null }
 			</ButtonGroup>
 		</Col>
 	)

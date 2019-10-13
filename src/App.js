@@ -10,6 +10,7 @@ import VideoContainer from './containers/videoContainer'
 class App extends React.Component {
 
 	state = {
+		searchTerm: '',
 		searchResults: [],
 		pageTokens: {},
 		selectedVideo: null,
@@ -23,6 +24,7 @@ class App extends React.Component {
 		pageTokens.next = data.nextPageToken ? data.nextPageToken : null
 		pageTokens.prev = data.prevPageToken ? data.prevPageToken : null
 		this.setState({
+			searchTerm: searchTerm,
 			searchResults: data.items,
 			selectedVideo: null,
 			pageTokens: pageTokens
@@ -38,6 +40,19 @@ class App extends React.Component {
 		})
 	}
 
+	handlePageChange = async (pageToken) => {
+		const apiKey = process.env.REACT_APP_GOOGLE_API_KEY
+		const pageTokens = {}
+		const data = await fetch(`${YTSEARCH}pageToken=${pageToken}&q=${this.state.searchTerm}&key=${apiKey}`)
+		.then(res => res.json())
+		pageTokens.next = data.nextPageToken ? data.nextPageToken : null
+		pageTokens.prev = data.prevPageToken ? data.prevPageToken : null
+		this.setState({
+			searchResults: data.items,
+			pageTokens: pageTokens
+		})
+	}
+
 	render() {
 		return (
 	    <Container>
@@ -48,7 +63,9 @@ class App extends React.Component {
 					{this.state.selectedVideo ? <VideoContainer details={this.state.videoDetails}/> : null }
 					<VideoList
 						videos={this.state.searchResults}
+						pageTokens={this.state.pageTokens}
 						handleVideoSelect={this.handleVideoSelect}
+						handlePageChange={this.handlePageChange}
 					/>
 				</Row>
 			</Container>
