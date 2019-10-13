@@ -36,7 +36,7 @@ class App extends React.Component {
 	render() {
 		return (
 	    <Container>
-				<Row className='justify-content-center my-3 border'>
+				<Row className='justify-content-center my-3'>
 					<SearchBar handleSubmit={this.handleSubmit}/>
 				</Row>
 				<Row className='justify-content-center'>
