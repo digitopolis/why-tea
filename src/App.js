@@ -11,16 +11,21 @@ class App extends React.Component {
 
 	state = {
 		searchResults: [],
+		pageTokens: {},
 		selectedVideo: null,
 		videoDetails: {}
 	}
 
 	handleSubmit = async (searchTerm) => {
 		const apiKey = process.env.REACT_APP_GOOGLE_API_KEY
+		const pageTokens = {}
 		const data = await fetch(`${YTSEARCH}q=${searchTerm}&key=${apiKey}`).then(res => res.json())
+		pageTokens.next = data.nextPageToken ? data.nextPageToken : null
+		pageTokens.prev = data.prevPageToken ? data.prevPageToken : null
 		this.setState({
 			searchResults: data.items,
-			selectedVideo: null
+			selectedVideo: null,
+			pageTokens: pageTokens
 		})
 	}
 
