@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { YTSEARCH, ONEVIDEO } from './apiEndpoints'
+import { YTSEARCH, ONEVIDEO, apiKey } from './apiEndpoints'
 import Row from 'react-bootstrap/Row'
 import Container from 'react-bootstrap/Container'
 import SearchBar from './components/searchBar'
@@ -18,7 +18,7 @@ class App extends React.Component {
 	}
 
 	handleSubmit = async (searchTerm) => {
-		const apiKey = process.env.REACT_APP_GOOGLE_API_KEY
+		// const apiKey = process.env.REACT_APP_GOOGLE_API_KEY
 		const pageTokens = {}
 		const data = await fetch(`${YTSEARCH}q=${searchTerm}&key=${apiKey}`).then(res => res.json())
 		pageTokens.next = data.nextPageToken ? data.nextPageToken : null
@@ -32,7 +32,7 @@ class App extends React.Component {
 	}
 
 	handleVideoSelect = async (videoId) => {
-		const apiKey = process.env.REACT_APP_GOOGLE_API_KEY
+		// const apiKey = process.env.REACT_APP_GOOGLE_API_KEY
 		const details = await fetch(`${ONEVIDEO}id=${videoId}&key=${apiKey}`).then(res => res.json())
 		this.setState({
 			selectedVideo: videoId,
@@ -41,7 +41,7 @@ class App extends React.Component {
 	}
 
 	handlePageChange = async (pageToken) => {
-		const apiKey = process.env.REACT_APP_GOOGLE_API_KEY
+		// const apiKey = process.env.REACT_APP_GOOGLE_API_KEY
 		const pageTokens = {}
 		const data = await fetch(`${YTSEARCH}pageToken=${pageToken}&q=${this.state.searchTerm}&key=${apiKey}`)
 		.then(res => res.json())
