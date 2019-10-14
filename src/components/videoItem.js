@@ -15,7 +15,7 @@ const VideoItem = ({ id, snippet, handleVideoSelect }) => {
 				alt=''
 			/>
 			<Media.Body>
-				<p><strong>{snippet.title}</strong></p>
+				<p>{snippet.title}</p>
 				<p className='text-muted'>{snippet.channelTitle}</p>
 			</Media.Body>
 		</Media>
